@@ -1,5 +1,6 @@
 package tests;
 
+import base.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,16 +11,11 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import utils.ConfigReader;
 
-public class LoginTest {
-    private WebDriver driver;
+public class LoginTest extends BaseTest {
     private LoginPage loginPage;
 
     @BeforeMethod
-    public void setUp() {
-        // Initialize WebDriver and navigate to the login page
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(); // or any other driver
-        driver.get("https://www.saucedemo.com/");
+    public void initPage(){
         loginPage = new LoginPage(driver);
     }
 
@@ -40,12 +36,7 @@ public class LoginTest {
                 "Expected error message for invalid login");
     }
 
-    @AfterMethod
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
-
 }
+
+
+
