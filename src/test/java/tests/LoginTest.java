@@ -23,6 +23,7 @@ public class LoginTest extends BaseTest {
     public void validLoginSucceeds() {
         // loginPage.login("standard_user", "secret_sauce");
         loginPage.login(ConfigReader.get("valid.username"), ConfigReader.get("valid.password"));
+        loginPage.waitForInventoryPage();
         Assert.assertTrue(driver.getCurrentUrl().contains("inventory"),
                 "Expected to land on inventory page after login");
     }

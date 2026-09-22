@@ -29,6 +29,7 @@ public class CheckoutTest extends BaseTest {
         checkoutPage = new CheckoutPage(driver);
 
         loginPage.login(ConfigReader.get("valid.username"), ConfigReader.get("valid.password"));
+        loginPage.waitForInventoryPage();
     }
 
     @Test

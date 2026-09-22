@@ -31,16 +31,18 @@ public class LoginPage {
         driver.findElement(loginButton).click();
     }
 
-   public void login (String username, String password) {
+    public void login (String username, String password) {
         enterUsername(username);
         enterPassword(password);
         clickLoginButton();
-
-       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-       wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("inventory_container")));
+    }
+    public void waitForInventoryPage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("inventory_container")));
     }
 
     public String getErrorMessage() {
+
         return driver.findElement(errorMessage).getText();
     }
 
