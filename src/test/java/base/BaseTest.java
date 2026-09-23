@@ -17,8 +17,15 @@ public class BaseTest {
         // Initialize WebDriver and navigate to the login page
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new", "--no-sandbox", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options); // or any other driver
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--window-size=1920,1080");
+
+        driver = new ChromeDriver(options);
+        driver.get(ConfigReader.get("url"));
+
+        // or any other driver
         driver.get(ConfigReader.get("url"));
 
     }
